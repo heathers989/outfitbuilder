@@ -51,10 +51,5 @@ const PORT = process.env.PORT
 const mongoURI = process.env.MONGO_URI
 
 
-
-
-
-
-
 // Listen
 app.listen(PORT, () => console.log('auth happening on port', PORT))

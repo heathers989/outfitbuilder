@@ -12,7 +12,8 @@ User stories:
 * --jewelry/accessories
 * --top (dresses go here also)
 * --bottoms
-* --shoes* tags for outfit occassion (party, fitness, work attire etc.)
+* --shoes
+* tags for outfit occassion (party, fitness, work attire etc.)
 * -After clicking submit, user will be brought to the show page for that outfit.
 * -After clicking on the index link, all outfits created are viewable with a thumbnail of the top showing and the  user that created it. Each outfit is clickable to bring up it's show page.
 * -On the show page, the user who created the outfit shows at the top, then the images /text are arranged in the way that they'd appear on a human (hats/hair accessories at the top, shoes at the bottom, etc.). Finally, at the very bottom are tags or categories for the outfit.

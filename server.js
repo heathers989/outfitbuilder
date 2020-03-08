@@ -45,6 +45,10 @@ app.use('/users', userController)
 const sessionsController = require('./controllers/sessions.js')
 app.use('/sessions', sessionsController)
 
+const outfitsController = require('./controllers/outfits.js')
+app.use('/app', outfitsController)
+
+
 
 // Configuration
 const PORT = process.env.PORT

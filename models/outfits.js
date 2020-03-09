@@ -7,7 +7,8 @@ const outfitSchema = Schema({
   accs: String,
   bottom: String,
   shoes: String,
-  tags: String
+  tags: String,
+  user: {type: String, required: true}
 })
 
 const Outfit = mongoose.model('Outfit', outfitSchema)

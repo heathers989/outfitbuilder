@@ -3,6 +3,7 @@ const app = express()
 const mongoose = require('mongoose')
 const session = require('express-session')
 const methodOverride = require('method-override')
+const Outfit = require('./models/outfits.js')
 require('dotenv').config()
 
 app.use(express.urlencoded({ extended: false}))
@@ -33,7 +34,10 @@ app.get('/', (req, res) => {
 
   app.get('/app', (req, res)=>{
     if(req.session.currentUser){
-        res.render('app/index.ejs')
+        Outfit.find({}, (error, allOutfits)=> {
+            res.render('app/index.ejs', { outfits: allOutfits
+            })
+        }) 
     } else {
         res.redirect('/sessions/new');
     }

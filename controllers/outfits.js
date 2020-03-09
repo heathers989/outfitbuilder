@@ -18,15 +18,19 @@ router.post('/', (req, res) =>{
     })
 })
 
-//index
-router.get('/', (req, res) => {
-    res.render('app/index.ejs')
-})
+// //index
+// router.get('/', (req, res) => {
+//     Outfit.find({}, (error, allOutfits)=> {
+//         res.render('app/index.ejs', { outfits: allOutfits
+//         })
+//     })  
+// })
 
 //show
 router.get('/:id', (req, res) => {
     Outfit.findById(req.params.id, (err, foundOutfit)=> {
-        res.render('app/show.ejs', { outfit: foundOutfit})
+        res.render('app/show.ejs', { outfit: foundOutfit
+        })
     })
 })
 

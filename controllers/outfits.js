@@ -19,12 +19,16 @@ router.post('/', (req, res) =>{
 })
 
 // //index
-// router.get('/', (req, res) => {
-//     Outfit.find({}, (error, allOutfits)=> {
-//         res.render('app/index.ejs', { outfits: allOutfits
-//         })
-//     })  
-// })
+router.get('/', (req, res)=>{
+    if(req.session.currentUser){
+        Outfit.find({}, (error, allOutfits)=> {
+            res.render('app/index.ejs', { outfits: allOutfits
+            })
+        }) 
+    } else {
+        res.redirect('/sessions/new');
+    }
+})
 
 //show
 router.get('/:id', (req, res) => {

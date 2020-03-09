@@ -32,16 +32,16 @@ app.get('/', (req, res) => {
     });
   })
 
-  app.get('/app', (req, res)=>{
-    if(req.session.currentUser){
-        Outfit.find({}, (error, allOutfits)=> {
-            res.render('app/index.ejs', { outfits: allOutfits
-            })
-        }) 
-    } else {
-        res.redirect('/sessions/new');
-    }
-})
+//   app.get('/app', (req, res)=>{
+//     if(req.session.currentUser){
+//         Outfit.find({}, (error, allOutfits)=> {
+//             res.render('app/index.ejs', { outfits: allOutfits
+//             })
+//         }) 
+//     } else {
+//         res.redirect('/sessions/new');
+//     }
+// })
 
 const userController = require('./controllers/users.js')
 app.use('/users', userController)

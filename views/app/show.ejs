@@ -6,14 +6,15 @@
       </head>
 </head>
 <body>
-    <div>Hat/hair accessories: <img src="<%=outfit.hat%>"> </div>
-    <img src="<%=outfit.top%>">
-    <img src="<%=outfit.accs%>">
-    <img src="<%=outfit.bottom%>">
-    <img src="<%=outfit.shoes%>">
+    <div id="container">
+    <div><img style="max-width: 300px; max-height: 200px;" src="<%=outfit.hat%>"> </div>
+    <div style="max-height: 310px; overflow: hidden;"> <img style="max-width: 300px;" src="<%=outfit.top%>"></div>
+     <div><img style="max-width: 300px; max-height: 200px;" src="<%=outfit.accs%>"></div>
+     <div><img style="max-width: 300px; max-height: 310px;" src="<%=outfit.bottom%>"></div>
+     <div><img style="max-width: 300px; max-height: 200px;" src="<%=outfit.shoes%>"></div>
     <div><%=outfit.tags%></div>
     <div>Outfit by <%=outfit.user%></div>
-   
+    </div>
     <h2><a href="/app">Back to Outfits Index</a></h2>
 </body>
 </html>

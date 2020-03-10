@@ -34,8 +34,9 @@ router.get('/', (req, res)=>{
 // show
 router.get('/:id', (req, res) => {
     if(req.session.currentUser){
-    Outfit.findById(req.params.id, (err, foundOutfit, user)=> {
-       user = req.session.currentUser.username
+    Outfit.findById(req.params.id, (err, foundOutfit)=> {
+       let user = req.session.currentUser.username
+    //    console.log(user)
         res.render('app/show.ejs', { outfit: foundOutfit, userCreated: user})    
     })
         } else {

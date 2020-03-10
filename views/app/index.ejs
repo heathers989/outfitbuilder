@@ -6,9 +6,9 @@
   <body>
     <h1>Welcome to the Outfit Builder</h1>
    <button><a href="app/new">Create a New Outfit</a> </button> 
-
-    <div id="container">
-      <h3>Click image to view full outfit</h3>
+   <h3>Click image to view full outfit</h3>
+    <div id="indexcontainer">
+      
         <% for(let i = 0; i < outfits.length; i++){ %>
         <div class="outfit" style="display: flex; flex-direction: column; margin-right: 10px; max-width: min-content;">          
                <a href="/app/<%=outfits[i].id %>"><img style= "max-width: 225px;" src="<%=outfits[i].top%>"> </a> 

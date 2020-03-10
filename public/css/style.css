@@ -1,0 +1,8 @@
+body {
+    background-image: url("https://i.pinimg.com/originals/07/2d/b6/072db633db972dd6aaa4f0bc14f42e9a.jpg")
+}
+
+#indexcontainer {
+    display: flex;
+    flex-direction: row;
+}

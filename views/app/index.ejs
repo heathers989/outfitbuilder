@@ -4,18 +4,20 @@
     <%- include ('../partials/head.ejs') %>
   </head>
   <body>
-    <h1>Welcome to the Outfit Builder</h1>
-   <button><a href="app/new">Create a New Outfit</a> </button> 
+    <div id="container">
+    <h2>Welcome to the Outfit Builder</h2>
+   <button id="create"><a href="app/new">Create a New Outfit</a> </button> 
    <h3>Click image to view full outfit</h3>
     <div id="indexcontainer">
       
         <% for(let i = 0; i < outfits.length; i++){ %>
-        <div class="outfit" style="display: flex; flex-direction: column; margin-right: 10px; max-width: min-content;">          
+        <div class="outfit">          
                <a href="/app/<%=outfits[i].id %>"><img style= "max-width: 225px;" src="<%=outfits[i].top%>"> </a> 
-               <div> Outfit created by: <%=outfits[i].user%> </div></br>
+               <div id="createdby"> Outfit created by: <%=outfits[i].user%> </div></br>
             </div>
         </br>
         <% } %>
     </div>
+  </div>
   </body>
 </html>

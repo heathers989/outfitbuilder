@@ -1,8 +1,58 @@
 body {
-    background-image: url("https://i.pinimg.com/originals/07/2d/b6/072db633db972dd6aaa4f0bc14f42e9a.jpg")
+    background-image: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/walk-in-closet-ideas-bespokedressingroom-02-1573831480.jpg");
+    background-repeat: none;
+    background-position: center;
+    background-size: cover;
+    color: #0579b3;
 }
 
-#indexcontainer {
+#container {
+    background-color: rgba(248, 244, 244, 0.60);
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 5%;
+    padding: 5%;
+}
+
+#indexcontainer, #showcontainer {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#showcontainer {
+    display: flex;
+    align-items: flex-end;
+}
+
+#showcontainer > div {
+    margin-right: 10px;
+}
+
+#createdby, #tags {
+    font-weight: bold;
+    font-size: large;
+}
+
+.outfit {
+    display: flex; 
+    flex-direction: column; 
+    margin-right: 15px; 
+    max-width: min-content;
+    
+}
+
+#create {
+    padding: 20px;
+    font-size: large;
+}
+
+#edit {
+    font-size: large;
+}
+
+.edit {
+    text-align: left;
+    font-size: large;
 }

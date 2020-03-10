@@ -7,27 +7,27 @@
 </head>
 <body>
     <div id="container">
+        <div id="showcontainer">
     <div><img style="max-width: 300px; max-height: 200px;" src="<%=outfit.hat%>"> </div>
     <div style="max-height: 310px; overflow: hidden;"> <img style="max-width: 300px;" src="<%=outfit.top%>"></div>
      <div><img style="max-width: 300px; max-height: 200px;" src="<%=outfit.accs%>"></div>
      <div><img style="max-width: 300px; max-height: 310px;" src="<%=outfit.bottom%>"></div>
      <div><img style="max-width: 300px; max-height: 200px;" src="<%=outfit.shoes%>"></div>
-    <div><%=outfit.tags%></div>
-    <div>Outfit by <%=outfit.user%></div>
     </div>
+    <div id="tags"> Occassion tags: <%=outfit.tags%></div>
+    <div id="createdby">Outfit by <%=outfit.user%></div>
+    
     <% if (userCreated === outfit.user) { %>
-        <button><a href="/app/<%=outfit.id%>/edit">Edit</a></button>
+        <button id="edit"><a href="/app/<%=outfit.id%>/edit">Edit</a></button>
         <form action="/app/<%=outfit.id%>?_method=DELETE" method="POST">
             <input type="submit" value="DELETE" /> 
         </form>
         <h2><a href="/app">Back to Outfits Index</a></h2>
         <% } else { %>
-            <h2><a href="/app">Back to Outfits Index</a></h2>
+           <h2><a href="/app">Back to Outfits Index</a></h2>
       <% } %>
     
-
-
- 
+    </div>
   
 </body>
 </html>

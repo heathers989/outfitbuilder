@@ -38,4 +38,11 @@ router.get('/:id', (req, res) => {
     })
 })
 
+//delete
+router.delete('/:id', (req, res)=>{
+    Outfit.findByIdAndRemove(req.params.id, (err, data) =>{
+        res.redirect('/app')
+    })
+  })
+
 module.exports = router

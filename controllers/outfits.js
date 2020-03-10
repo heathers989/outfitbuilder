@@ -18,7 +18,7 @@ router.post('/', (req, res) =>{
     })
 })
 
-// //index
+//index
 router.get('/', (req, res)=>{
     if(req.session.currentUser){
         Outfit.find({}, (error, allOutfits)=> {
@@ -30,18 +30,38 @@ router.get('/', (req, res)=>{
     }
 })
 
-//show
+
+// show
 router.get('/:id', (req, res) => {
-    Outfit.findById(req.params.id, (err, foundOutfit)=> {
-        res.render('app/show.ejs', { outfit: foundOutfit
-        })
+    if(req.session.currentUser){
+    Outfit.findById(req.params.id, (err, foundOutfit, user)=> {
+       user = req.session.currentUser.username
+        res.render('app/show.ejs', { outfit: foundOutfit, userCreated: user})    
     })
+        } else {
+            res.redirect('/sessions/new')
+        }
 })
 
 //delete
 router.delete('/:id', (req, res)=>{
     Outfit.findByIdAndRemove(req.params.id, (err, data) =>{
         res.redirect('/app')
+    })
+  })
+
+  //edit
+  router.get('/:id/edit', (req, res)=> {
+    Outfit.findById(req.params.id, (err, foundOutfit) => {
+        res.render('app/edit.ejs', {outfit: foundOutfit})
+    })  
+})
+
+//PUT/update
+router.put('/:id', (req, res)=>{
+    Outfit.findByIdAndUpdate(req.params.id, req.body, 
+        {new: true}, (err, updatedModel) => {
+            res.redirect(`/app/${req.params.id}`)
     })
   })
 

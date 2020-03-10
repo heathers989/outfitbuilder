@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <%- include ('../partials/head.ejs') %>
+</head>
+<body>
+    <h2>Edit</h2>
+
+    <form action="/app/<%=outfit.id%>?_method=PUT" method="POST">
+        Hat/hair accessories: <input type="text" name="hat" value="<%=outfit.hat%>" /><br/>
+        Top/dress: <input type="text" name="top" value="<%=outfit.top%>" /><br/>
+        Accessories: <input type="text" name="accs" value="<%=outfit.accs%>" /><br/>
+        Bottom: <input type="text" name="price" value="<%=outfit.bottom%>" /><br/>
+        Shoes: <input type="text" name="qty" value="<%=outfit.shoes%>" /><br/>
+        Tags (occassions): <input type="text" name="tags" value="<%=outfit.tags%>">
+        <input type="submit" name="" value="Submit Changes"/>
+    </form>
+    
+</body>
+</html>

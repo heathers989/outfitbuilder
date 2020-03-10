@@ -15,9 +15,14 @@
     <div><%=outfit.tags%></div>
     <div>Outfit by <%=outfit.user%></div>
     </div>
-    <form action="/app/<%=outfit.id%>?_method=DELETE" method="POST">
-        <input type="submit" value="DELETE" /> 
-    </form>
-    <h2><a href="/app">Back to Outfits Index</a></h2>
+        <button><a href="/app/<%=outfit.id%>/edit">Edit</a></button>
+        <form action="/app/<%=outfit.id%>?_method=DELETE" method="POST">
+            <input type="submit" value="DELETE" /> 
+        </form>
+        <h2><a href="/app">Back to Outfits Index</a></h2>
+
+
+ 
+  
 </body>
 </html>

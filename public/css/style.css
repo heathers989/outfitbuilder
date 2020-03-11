@@ -6,6 +6,7 @@ body {
     color: #0579b3;
 }
 
+
 #container {
     background-color: rgba(248, 244, 244, 0.60);
     text-align: center;
@@ -51,6 +52,7 @@ body {
 
 #edit {
     font-size: large;
+    margin-bottom: 5px;
 }
 
 .edit, .new {

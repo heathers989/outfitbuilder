@@ -14,12 +14,42 @@ router.get('/new', (req, res) => {
 }
 })
 
+//seed route
+router.get('/seed', async (req, res) => {
+    const newOutfits =
+      [
+        {
+            hat: "https://www.modcloth.com/dw/image/v2/ABAT_PRD/on/demandware.static/-/Sites-modcloth-master/default/dw68f02c89/images/10116847_be_a_star_headband_navy_MAIN.jpg?sw=913&sm=fit",
+            top: "https://images.express.com/is/image/expressfashion/0097_08625436_0001?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon",
+            accs: "https://images.express.com/is/image/expressfashion/0008_00769235_0403?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon",
+            bottom: "https://images.express.com/is/image/expressfashion/0091_07198909_0019?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon",
+            shoes: "https://images.express.com/is/image/expressfashion/0095_09879567_0024?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon",
+            tags: "casual",
+            user: "marie"
+        }, {
+            hat: "https://images.express.com/is/image/expressfashion/0306_80000151_3001?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon",
+            top: "https://images.express.com/is/image/expressfashion/0094_07803086_2497?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon",
+            accs: "https://images.express.com/is/image/expressfashion/0009_00951483_0355_f002?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon",
+            bottom: "https://www.modcloth.com/dw/image/v2/ABAT_PRD/on/demandware.static/-/Sites-modcloth-master/default/dw3d94a6ae/images/10123081_root_of_the_flatter_tights_taupe_MAIN.jpg?sw=913&sm=fit",
+            shoes: "https://images.express.com/is/image/expressfashion/0095_00310134_0111_f002?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon",
+            tags: "career",
+            user: "heather"
+        }
+      ]
+  
+    try {
+      const seedItems = await Outfit.create(newOutfits)
+      res.send(seedItems)
+    } catch (err) {
+      res.send(err.message)
+    }
+  })
 
 //Create
 router.post('/', (req, res) =>{
     Outfit.create(req.body, (error, createdOutfit)=> {
-        let str = req.body.tags.split(',')
-        console.log(str)
+        // let str = req.body.tags.split(',')
+        // console.log(str)
         // createdOutfit.tags.push(str)
         // console.log(createdOutfit)
         res.redirect(`/app/${createdOutfit.id}`)

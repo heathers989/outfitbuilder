@@ -4,6 +4,8 @@
     <%- include ('../partials/head.ejs') %>
   </head>
   <body>
+      <div id="container">
+        <div class="new">
     <h1>Let's create a new outfit!</h1>
 
     <form action="/app" method="POST">
@@ -16,5 +18,7 @@
         User: <input type="text" name="user" value="<%=username%>"/>
         <input type="submit" name="" value="Create Outfit"/>
     </form>
+      </div>
+    </div>
   </body>
 </html>

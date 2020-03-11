@@ -5,15 +5,23 @@ const User = require('../models/users.js')
 
 //New
 router.get('/new', (req, res) => {
+    if (req.session.currentUser){
         let userCreating = {}
         userCreating.username = req.session.currentUser.username
         res.render('app/new.ejs', userCreating)
+} else {
+    res.redirect('/sessions/new')
+}
 })
+
 
 //Create
 router.post('/', (req, res) =>{
     Outfit.create(req.body, (error, createdOutfit)=> {
-        console.log(createdOutfit)
+        let str = req.body.tags.split(',')
+        console.log(str)
+        // createdOutfit.tags.push(str)
+        // console.log(createdOutfit)
         res.redirect(`/app/${createdOutfit.id}`)
     })
 })

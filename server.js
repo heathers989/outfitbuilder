@@ -6,6 +6,11 @@ const methodOverride = require('method-override')
 const Outfit = require('./models/outfits.js')
 require('dotenv').config()
 
+
+// Configuration
+const PORT = process.env.PORT
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/outfitbuilderdb';
+
 app.use(express.urlencoded({ extended: false}))
 
 app.use(session({
@@ -18,8 +23,7 @@ app.use(session({
 
   app.use(express.static('public'));
 
-mongoose.connect('mongodb://localhost:27017/outfitbuilderdb', { 
-    useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect({useNewUrlParser: true, useUnifiedTopology: true});
 
 mongoose.connection.once('open', ()=> {
     console.log('connected to mongo');
@@ -54,10 +58,8 @@ app.use('/app', outfitsController)
 
 
 
-// Configuration
-const PORT = process.env.PORT
-const mongoURI = process.env.MONGO_URI
 
+mongoose.connect(MONGODB_URI , { useNewUrlParser: true})
 
 // Listen
 app.listen(PORT, () => console.log('auth happening on port', PORT))

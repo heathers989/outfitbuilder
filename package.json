@@ -1,6 +1,7 @@
 {
   "name": "outfitbuilder",
   "version": "1.0.0",
+  "engines": { "node": "13.3.0"},
   "description": "create outfits/outfit inspo from head to toe using links/text/images",
   "main": "server.js",
   "scripts": {

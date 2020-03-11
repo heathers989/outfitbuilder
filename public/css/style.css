@@ -18,7 +18,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     flex-wrap: wrap;
 }
 
@@ -53,7 +53,7 @@ body {
     font-size: large;
 }
 
-.edit {
+.edit, .new {
     text-align: left;
     font-size: large;
 }

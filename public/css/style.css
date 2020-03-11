@@ -39,7 +39,7 @@ body {
 .outfit {
     display: flex; 
     flex-direction: column; 
-    margin-right: 15px; 
+    margin-right: 18px; 
     max-width: min-content;
     
 }

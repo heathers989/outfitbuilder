@@ -5,17 +5,18 @@
 </head>
 <body>
     <div id="container">
-        <div id="sessioninfo"><div>Logged in as: <%=loggedIn.username%> &nbsp;</div><form action="/sessions?_method=DELETE" method="POST">
-            <input type="submit" style="color: #039be5;" value="Logout"/>
-        </form></div>
+            <div id="sessioninfo"><div>Logged in as: <%=loggedIn.username%> &nbsp;</div><form action="/sessions?_method=DELETE" method="POST">
+                <input type="submit" style="color: #039be5;" value="Logout"/>
+            </form></div>
+        
     <h2>Edit</h2>
 
     <form action="/app/<%=outfit.id%>?_method=PUT" method="POST">
        <div class="edit"> Hat/hair accessories:</div> <input type="text" name="hat" value="<%=outfit.hat%>" />
       <div class="edit"> Top/dress: </div> <input type="text" name="top" value="<%=outfit.top%>" />
        <div class="edit"> Accessories: </div> <input type="text" name="accs" value="<%=outfit.accs%>" />
-        <div class="edit">Bottom: </div> <input type="text" name="price" value="<%=outfit.bottom%>" />
-        <div class="edit">Shoes: </div> <input type="text" name="qty" value="<%=outfit.shoes%>" /> 
+        <div class="edit">Bottom: </div> <input type="text" name="bottom" value="<%=outfit.bottom%>" />
+        <div class="edit">Shoes: </div> <input type="text" name="shoes" value="<%=outfit.shoes%>" /> 
         <div class="edit"> Tags (occassions): <input type="text" name="tags" value="<%=outfit.tags%>">
         <input type="submit" name="" style="color: #039be5;" value="Submit Changes"/>
     </form>

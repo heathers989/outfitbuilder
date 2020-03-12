@@ -14,6 +14,21 @@ router.get('/new', (req, res) => {
 }
 })
 
+//Create
+router.post('/', (req, res) =>{
+    Outfit.create(req.body, (error, createdOutfit)=> {
+        let str = req.body.tags.split(', ')
+        console.log(str)
+        createdOutfit.tags = str
+        console.log(createdOutfit)
+        Outfit.findByIdAndUpdate(createdOutfit.id, createdOutfit,
+            {new: true}, (err, updatedModel) => {
+                res.redirect(`/app/${createdOutfit.id}`) 
+        })
+       
+    })
+})
+
 //seed route
 router.get('/seed', async (req, res) => {
     const newOutfits =
@@ -45,19 +60,21 @@ router.get('/seed', async (req, res) => {
     }
   })
 
-//Create
-router.post('/', (req, res) =>{
-    Outfit.create(req.body, (error, createdOutfit)=> {
-        let str = req.body.tags.split(', ')
-        console.log(str)
-        createdOutfit.tags = str
-        console.log(createdOutfit)
-        Outfit.findByIdAndUpdate(createdOutfit.id, createdOutfit,
-            {new: true}, (err, updatedModel) => {
-                res.redirect(`/app/${createdOutfit.id}`) 
-        })
-       
-    })
+
+
+  //index
+  router.get('/', (req, res)=>{
+    if(req.session.currentUser){
+        Outfit.find({}, (error, allOutfits)=> {
+            let loggedIn = {}
+            loggedIn.username = req.session.currentUser.username
+            // console.log(loggedIn)
+            res.render('app/index.ejs', { outfits: allOutfits, loggedIn: loggedIn
+            })
+        }) 
+    } else {
+        res.redirect('/sessions/new');
+    }
 })
 
 
@@ -74,6 +91,14 @@ router.get('/:id', (req, res) => {
         }
 })
 
+ //delete
+ router.delete('/:id', (req, res)=>{
+    console.log(req.params.id)
+    Outfit.findByIdAndRemove(req.params.id, (err, data) =>{
+        console.log(data)
+        res.redirect('/app')
+    })
+  })
 
 
   //edit
@@ -93,28 +118,8 @@ router.put('/:id', (req, res)=>{
     })
   })
 
-  //delete
-router.delete('/:id', (req, res)=>{
-    console.log(req.params.id)
-    Outfit.findByIdAndRemove(req.params.id, (err, data) =>{
-        console.log(data)
-        res.redirect('/app')
-    })
-  })
+ 
 
-  //index
-router.get('/', (req, res)=>{
-    if(req.session.currentUser){
-        Outfit.find({}, (error, allOutfits)=> {
-            let loggedIn = {}
-            loggedIn.username = req.session.currentUser.username
-            // console.log(loggedIn)
-            res.render('app/index.ejs', { outfits: allOutfits, loggedIn: loggedIn
-            })
-        }) 
-    } else {
-        res.redirect('/sessions/new');
-    }
-})
+
 
 module.exports = router

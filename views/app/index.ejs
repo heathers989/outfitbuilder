@@ -5,6 +5,9 @@
   </head>
   <body>
     <div id="container">
+        <div id="sessioninfo"><div>Logged in as: <%=loggedIn.username%> &nbsp;</div><form action="/sessions?_method=DELETE" method="POST">
+          <input type="submit" style="color: #039be5;" value="Logout"/>
+      </form></div>
     <h2>Welcome to the Outfit Builder</h2>
    <button id="create"><a href="app/new">Create a New Outfit</a> </button> 
    <h3>Click image to view full outfit</h3>

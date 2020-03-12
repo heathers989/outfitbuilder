@@ -24,7 +24,7 @@ router.get('/seed', async (req, res) => {
             accs: "https://images.express.com/is/image/expressfashion/0008_00769235_0403?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon",
             bottom: "https://images.express.com/is/image/expressfashion/0091_07198909_0019?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon",
             shoes: "https://images.express.com/is/image/expressfashion/0095_09879567_0024?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon",
-            tags: "casual",
+            tags: ["casual", "everyday"],
             user: "marie"
         }, {
             hat: "https://images.express.com/is/image/expressfashion/0306_80000151_3001?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon",
@@ -32,7 +32,7 @@ router.get('/seed', async (req, res) => {
             accs: "https://images.express.com/is/image/expressfashion/0009_00951483_0355_f002?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon",
             bottom: "https://www.modcloth.com/dw/image/v2/ABAT_PRD/on/demandware.static/-/Sites-modcloth-master/default/dw3d94a6ae/images/10123081_root_of_the_flatter_tights_taupe_MAIN.jpg?sw=913&sm=fit",
             shoes: "https://images.express.com/is/image/expressfashion/0095_00310134_0111_f002?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon?cache=on&wid=361&fmt=jpeg&qlt=75,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon",
-            tags: "career",
+            tags: ["career", "work"],
             user: "heather"
         }
       ]
@@ -48,11 +48,15 @@ router.get('/seed', async (req, res) => {
 //Create
 router.post('/', (req, res) =>{
     Outfit.create(req.body, (error, createdOutfit)=> {
-        // let str = req.body.tags.split(',')
-        // console.log(str)
-        // createdOutfit.tags.push(str)
-        // console.log(createdOutfit)
-        res.redirect(`/app/${createdOutfit.id}`)
+        let str = req.body.tags.split(', ')
+        console.log(str)
+        createdOutfit.tags = str
+        console.log(createdOutfit)
+        Outfit.findByIdAndUpdate(createdOutfit.id, createdOutfit,
+            {new: true}, (err, updatedModel) => {
+                res.redirect(`/app/${createdOutfit.id}`) 
+        })
+       
     })
 })
 
@@ -60,7 +64,10 @@ router.post('/', (req, res) =>{
 router.get('/', (req, res)=>{
     if(req.session.currentUser){
         Outfit.find({}, (error, allOutfits)=> {
-            res.render('app/index.ejs', { outfits: allOutfits
+            let loggedIn = {}
+            loggedIn.username = req.session.currentUser.username
+            // console.log(loggedIn)
+            res.render('app/index.ejs', { outfits: allOutfits, loggedIn: loggedIn
             })
         }) 
     } else {
@@ -92,7 +99,9 @@ router.delete('/:id', (req, res)=>{
   //edit
   router.get('/:id/edit', (req, res)=> {
     Outfit.findById(req.params.id, (err, foundOutfit) => {
-        res.render('app/edit.ejs', {outfit: foundOutfit})
+        let loggedIn = {}
+            loggedIn.username = req.session.currentUser.username
+        res.render('app/edit.ejs', {outfit: foundOutfit, loggedIn: loggedIn})
     })  
 })
 

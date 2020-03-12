@@ -5,6 +5,9 @@
   </head>
   <body>
       <div id="container">
+          <div id="sessioninfo"><div>Logged in as: <%=username%> &nbsp;</div><form action="/sessions?_method=DELETE" method="POST">
+            <input type="submit" style="color: #039be5;" value="Logout"/>
+        </form></div>
         <div class="new">
     <h1>Let's create a new outfit!</h1>
 

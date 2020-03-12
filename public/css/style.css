@@ -59,3 +59,10 @@ body {
     text-align: left;
     font-size: large;
 }
+
+#sessioninfo {
+    display: flex;
+    color: #0579b3;
+    justify-content: flex-end;
+  
+}

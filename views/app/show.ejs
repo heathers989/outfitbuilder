@@ -7,6 +7,9 @@
 </head>
 <body>
     <div id="container">
+                   <div id="sessioninfo">Logged in as: <%=userCreated%> &nbsp;
+                    <form action="/sessions?_method=DELETE" method="POST">
+                    <input type="submit" style="color: #039be5;" value="Logout"/></div> </br> </br>
         <div id="showcontainer">
     <div><img style="max-width: 300px; max-height: 200px;" src="<%=outfit.hat%>"> </div>
     <div style="max-height: 310px; overflow: hidden;"> <img style="max-width: 300px;" src="<%=outfit.top%>"></div>

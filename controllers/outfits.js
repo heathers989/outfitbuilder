@@ -60,21 +60,6 @@ router.post('/', (req, res) =>{
     })
 })
 
-//index
-router.get('/', (req, res)=>{
-    if(req.session.currentUser){
-        Outfit.find({}, (error, allOutfits)=> {
-            let loggedIn = {}
-            loggedIn.username = req.session.currentUser.username
-            // console.log(loggedIn)
-            res.render('app/index.ejs', { outfits: allOutfits, loggedIn: loggedIn
-            })
-        }) 
-    } else {
-        res.redirect('/sessions/new');
-    }
-})
-
 
 // show
 router.get('/:id', (req, res) => {
@@ -89,12 +74,7 @@ router.get('/:id', (req, res) => {
         }
 })
 
-//delete
-router.delete('/:id', (req, res)=>{
-    Outfit.findByIdAndRemove(req.params.id, (err, data) =>{
-        res.redirect('/app')
-    })
-  })
+
 
   //edit
   router.get('/:id/edit', (req, res)=> {
@@ -112,5 +92,29 @@ router.put('/:id', (req, res)=>{
             res.redirect(`/app/${req.params.id}`)
     })
   })
+
+  //delete
+router.delete('/:id', (req, res)=>{
+    console.log(req.params.id)
+    Outfit.findByIdAndRemove(req.params.id, (err, data) =>{
+        console.log(data)
+        res.redirect('/app')
+    })
+  })
+
+  //index
+router.get('/', (req, res)=>{
+    if(req.session.currentUser){
+        Outfit.find({}, (error, allOutfits)=> {
+            let loggedIn = {}
+            loggedIn.username = req.session.currentUser.username
+            // console.log(loggedIn)
+            res.render('app/index.ejs', { outfits: allOutfits, loggedIn: loggedIn
+            })
+        }) 
+    } else {
+        res.redirect('/sessions/new');
+    }
+})
 
 module.exports = router

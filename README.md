@@ -1,4 +1,7 @@
 # outfitbuilder
+
+* Heroku link: https://outfitbuilder.herokuapp.com/
+
 * Purpose: create outfits/outfit inspo from head to toe using links/text/images 
 
 * Problem: User doesn't don't know what to wear/wants to update their wardrobe/create new outfit ideas/inspo

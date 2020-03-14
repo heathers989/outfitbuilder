@@ -13,15 +13,16 @@
 
     <form action="/app" method="POST">
         Hat/hair accessories: <input type="text" name="hat" /><br/>
-        Top/dress: <input type="text" name="top" /><br/>
+        *Top/dress: <input type="text" name="top" /><br/>
         Accessory: <input type="text" name="accs" /><br/>
         Bottoms: <input type="text" name="bottom" /><br/>
         Shoes: <input type="text" name="shoes" /><br/>
         Tags (occassion): <input type="text" name="tags" /><br/>
-        User: <input type="text" name="user" value="<%=username%>"/>
+        *User: <input type="text" name="user" value="<%=username%>"/>
         <input type="submit" name="" style="color: #039be5;" value="Create Outfit"/>
     </form>
       </div>
+      <p>*required field</p>
     </div>
   </body>
 </html>

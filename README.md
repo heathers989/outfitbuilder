@@ -14,9 +14,9 @@ mongo, mongoDB, mongoDB compass, JavaScript, EJS, node.js, express, HTML/CSS, He
 * Approach taken: Set up authentication first, then created the REST routes, then added styling, and finally deployed to Heroku. Wanted users to be able to create outfits/outfit inspo with multiple components for themselves and to share with other users.
 
 Unsolved problems/changes to make:
-* Have logged in username and logout button show on each page
+* ~~Have logged in username and logout button show on each page~~
 * Have options to filter results by user or tags.
-* Have tags show as an array rather than just one string so that results can be filtered by tags in the future.
+* ~~Have tags show as an array rather than just one string so that results can be filtered by tags in the future.~~
 
 User stories:
 * As a user, I click on the sign up button to create an account. Once I've done so, I should be able to click log in, enter my username and password, and log in to page. Once logged in, I should be brought to an index page where I can view all created outfits, to or click a button to add a new outfit. 

@@ -9,7 +9,7 @@ General App Idea/Purpose: create outfits/outfit inspo from head to toe using lin
 Who Would Use It: anyone with the above problems that is also interested in new fashion ideas.
 
 * Technologies used: 
-mongo, mongoDB, mongoDB compass, JavaScript, EJS, node.js, express, HTML/CSS, Heroku for hosting.
+mongo, mongoDB, mongoDB compass, JavaScript, EJS, node.js, express, HTML/CSS, Materialize, Heroku for hosting.
 
 * Approach taken: Set up authentication first, then created the REST routes, then added styling, and finally deployed to Heroku. Wanted users to be able to create outfits/outfit inspo with multiple components for themselves and to share with other users.
 
